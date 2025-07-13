@@ -1,10 +1,9 @@
 services:
   - type: web
     name: tinycare-backend
-    env: java
+    env: docker
     plan: free
-    buildCommand: "./mvnw clean package -DskipTests"
-    startCommand: "java -jar target/tinycare-0.0.1-SNAPSHOT.jar"
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: SPRING_DATASOURCE_URL
         value: jdbc:postgresql://dpg-d1pp2bbipnbc7389a720-a.singapore-postgres.render.com/tinycarepg
@@ -12,7 +11,5 @@ services:
         value: tinycarepg_user
       - key: SPRING_DATASOURCE_PASSWORD
         value: qRnPCGO6bzM2jD86vbLPO46ZWeZkx81s
-    runtime: java
-    buildEnvVars:
-      - key: JAVA_VERSION
-        value: 21
+      - key: JWT_SECRET
+        value: V{aPW:CLa$bG*dLw0GHbQA[DnC,9az
