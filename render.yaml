@@ -15,3 +15,5 @@ services:
         value: update
       - key: SPRING_JPA_SHOW_SQL
         value: true
+      - key: JWT_SECRET
+        value: V{aPW:CLa$bG*dLw0GHbQA[DnC,9az
