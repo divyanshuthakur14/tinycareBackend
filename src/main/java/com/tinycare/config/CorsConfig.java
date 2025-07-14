@@ -13,11 +13,18 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
+                System.out.println(">>> Applying global CORS configuration");
+
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:3000","https://meek-pasca-7094d7.netlify.app")
+                        .allowedOrigins(
+                                "http://localhost:3000",
+                                "https://meek-pasca-7094d7.netlify.app"
+                        )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
-                        .allowCredentials(true);
+                        .exposedHeaders("Authorization") // optional, if using tokens
+                        .allowCredentials(true)
+                        .maxAge(3600); // cache preflight responses
             }
         };
     }
