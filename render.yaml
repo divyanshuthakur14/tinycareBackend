@@ -4,12 +4,3 @@ services:
     env: docker
     dockerfilePath: ./Dockerfile
     plan: free
-    envVars:
-      - key: SPRING_DATASOURCE_URL
-        value: jdbc:postgresql://dpg-d1pp2bbipnbc7389a720-a.singapore-postgres.render.com/tinycarepg
-      - key: SPRING_DATASOURCE_USERNAME
-        value: tinycarepg_user
-      - key: SPRING_DATASOURCE_PASSWORD
-        value: qRnPCGO6bzM2jD86vbLPO46ZWeZkx81s
-      - key: JWT_SECRET
-        value: V{aPW:CLa$bG*dLw0GHbQA[DnC,9az
