@@ -4,3 +4,14 @@ services:
     env: docker
     dockerfilePath: ./Dockerfile
     plan: free
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:postgresql://dpg-d1qaomnfte5s73d4scpg-a.oregon-postgres.render.com:5432/tinycarepg_dy7e
+      - key: SPRING_DATASOURCE_USERNAME
+        value: tinycarepg_dy7e_user
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: BWsziaaAg2s5ooa0rrcDQDefRJqSWzXPD
+      - key: SPRING_JPA_HIBERNATE_DDL_AUTO
+        value: update
+      - key: SPRING_JPA_SHOW_SQL
+        value: true
