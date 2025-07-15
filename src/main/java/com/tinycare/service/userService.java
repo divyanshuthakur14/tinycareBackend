@@ -1,9 +1,10 @@
 package com.tinycare.service;
 
 import com.tinycare.dto.UserDTO;
-import com.tinycare.exception.ResourceNotFoundException;
-import com.tinycare.model.User;
 import com.tinycare.dto.UserUpdateDTO;
+import com.tinycare.exception.ResourceNotFoundException;
+import com.tinycare.model.Role;
+import com.tinycare.model.User;
 import com.tinycare.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -50,6 +51,13 @@ public class userService {
         }
 
         return user;
+    }
+
+    public void updateRole(Long id, Role newRole) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        user.setRole(newRole);
+        userRepository.save(user);
     }
 
     public User getUserByEmail(String email) {

@@ -97,6 +97,14 @@ public class UserController {
         return "Welcome to ADMIN Dashboard";
     }
 
+    @PutMapping("/{id}/role")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<String> updateUserRole(@PathVariable Long id, @RequestParam com.tinycare.model.Role role) {
+        userService.updateRole(id, role);
+        return ResponseEntity.ok("User role updated to " + role.name());
+    }
+
+
     @GetMapping("/me")
     public ResponseEntity<UserDTO> getCurrentUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
