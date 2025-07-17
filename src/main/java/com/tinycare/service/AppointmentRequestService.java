@@ -58,10 +58,8 @@ public class AppointmentRequestService {
     public AppointmentDTO approveAndCreateAppointment(Long requestId, String doctorName, LocalDateTime finalDate) {
         AppointmentRequest req = requestRepo.findById(requestId).orElseThrow();
         if (!"PENDING".equals(req.getStatus())) throw new RuntimeException("Already processed");
-
         req.setStatus("APPROVED");
         requestRepo.save(req);
-
         Appointment appt = new Appointment();
         appt.setDoctorName(doctorName);
         appt.setAppointmentDate(finalDate);

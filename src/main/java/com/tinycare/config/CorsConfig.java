@@ -16,15 +16,12 @@ public class CorsConfig {
                 System.out.println(">>> Applying global CORS configuration");
 
                 registry.addMapping("/**")
-                        .allowedOrigins(
-                                "http://localhost:3000",
-                                "https://thetinycare.netlify.app"
-                        )
+                        .allowedOrigins("http://localhost:3000", "https://thetinycare.netlify.app")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
-                        .exposedHeaders("Authorization") // optional, if using tokens
+                        .exposedHeaders("Authorization")
                         .allowCredentials(true)
-                        .maxAge(3600); // cache preflight responses
+                        .maxAge(3600);
             }
         };
     }

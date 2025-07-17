@@ -5,13 +5,13 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
+@SuppressWarnings("ALL")
 @Entity
 public class BabyHealthRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String babyName;
     private int ageInMonths;
     private double weight;

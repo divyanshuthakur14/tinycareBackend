@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+@SuppressWarnings("ALL")
 @Service
 public class userService {
 
@@ -45,7 +46,6 @@ public class userService {
     public User loginUser(String email, String rawPassword) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("Invalid credentials"));
-
         if (!passwordEncoder.matches(rawPassword, user.getPassword())) {
             throw new ResourceNotFoundException("Invalid credentials");
         }
@@ -64,6 +64,4 @@ public class userService {
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
     }
-
-
 }

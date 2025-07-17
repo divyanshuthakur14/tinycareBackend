@@ -4,12 +4,19 @@ import com.tinycare.model.BabyHealthRecord;
 
 import java.time.LocalDateTime;
 
+@SuppressWarnings("ALL")
 public class BabyHealthRecordDTO {
+
+    private Long id;
+    private String babyName;
+    private int ageInMonths;
+    private double weight;
+    private String notes;
+    private LocalDateTime createdAt;
 
     public BabyHealthRecordDTO() {
 
     }
-
 
     public BabyHealthRecordDTO(BabyHealthRecord baby) {
         this.id = baby.getId();
@@ -19,14 +26,6 @@ public class BabyHealthRecordDTO {
         this.notes = baby.getNotes();
         this.createdAt = baby.getCreatedAt();
     }
-
-
-    private Long id;
-    private String babyName;
-    private int ageInMonths;
-    private double weight;
-    private String notes;
-    private LocalDateTime createdAt;
 
     public Long getId() {
         return id;

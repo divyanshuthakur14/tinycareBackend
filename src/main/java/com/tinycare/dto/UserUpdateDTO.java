@@ -5,17 +5,14 @@ import jakarta.validation.constraints.NotBlank;
 
 public class UserUpdateDTO {
 
-    @NotBlank(message = "Name is required")
     private String name;
-
-    @Email(message = "Invalid email format")
-    @NotBlank(message = "Email is required")
     private String email;
-
-    // Password is optional during update
     private String password;
 
-    // Constructors
+    @Email(message = "Invalid email format")
+    @NotBlank(message = "Name is required")
+    @NotBlank(message = "Email is required")
+
     public UserUpdateDTO() {
     }
 
@@ -25,7 +22,6 @@ public class UserUpdateDTO {
         this.password = password;
     }
 
-    // Getters & Setters
     public String getName() {
         return name;
     }

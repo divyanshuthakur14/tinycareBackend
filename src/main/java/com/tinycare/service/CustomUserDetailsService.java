@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 
+@SuppressWarnings("ALL")
 @Service
 @Primary
 public class CustomUserDetailsService implements UserDetailsService {

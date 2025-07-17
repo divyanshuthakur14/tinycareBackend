@@ -17,7 +17,7 @@ public class BabyHealthRecordController {
 
     @Autowired
     private BabyHealthRecordService babyService;
-    private userService userservice;
+    private final userService userservice;
 
     public BabyHealthRecordController(BabyHealthRecordService babyService, userService userservice) {
         this.babyService = babyService;
@@ -37,11 +37,7 @@ public class BabyHealthRecordController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateBaby(
-            @PathVariable Long id,
-            @RequestBody BabyHealthRecordDTO dto,
-            Authentication auth
-    ) {
+    public ResponseEntity<?> updateBaby(@PathVariable Long id, @RequestBody BabyHealthRecordDTO dto, Authentication auth) {
         String email = auth.getName();
         return ResponseEntity.ok(babyService.updateBaby(id, dto, email));
     }
@@ -54,13 +50,8 @@ public class BabyHealthRecordController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<BabyHealthRecordDTO>> search(
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) Integer age,
-            Authentication authentication) {
-
+    public ResponseEntity<List<BabyHealthRecordDTO>> search(@RequestParam(required = false) String name, @RequestParam(required = false) Integer age, Authentication authentication) {
         User user = userservice.getUserByEmail(authentication.getName());
-
         if (name != null) {
             return ResponseEntity.ok(babyService.searchByName(name, user.getId()));
         } else if (age != null) {
@@ -69,7 +60,4 @@ public class BabyHealthRecordController {
             return ResponseEntity.badRequest().build();
         }
     }
-
-
-
 }

@@ -13,7 +13,6 @@ public class UserDTO {
     private Role role;
     private LocalDateTime createdAt;
 
-    // Constructor from User
     public UserDTO(User user) {
         this.id = user.getId();
         this.name = user.getName();
@@ -22,7 +21,6 @@ public class UserDTO {
         this.createdAt = user.getCreatedAt();
     }
 
-    // Getters
     public Long getId() { return id; }
     public String getName() { return name; }
     public String getEmail() { return email; }

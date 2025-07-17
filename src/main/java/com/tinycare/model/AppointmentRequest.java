@@ -3,14 +3,14 @@ package com.tinycare.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+@SuppressWarnings("ALL")
 @Entity
 public class AppointmentRequest {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private LocalDateTime preferredDate;
     private String reason;
-    private String status = "PENDING"; // PENDING / APPROVED / REJECTED
+    private String status = "PENDING";
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;

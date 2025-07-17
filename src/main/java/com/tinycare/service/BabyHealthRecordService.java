@@ -23,10 +23,6 @@ public class BabyHealthRecordService {
     @Autowired
     private UserRepository userRepo;
 
-
-
-
-
     public BabyHealthRecord createRecord(BabyHealthRecordDTO dto) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String email = auth.getName();
@@ -59,7 +55,6 @@ public class BabyHealthRecordService {
         User user = userRepo.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
-
         if (!baby.getUser().getId().equals(user.getId()) && user.getRole() != Role.ADMIN) {
             throw new RuntimeException("Unauthorized");
         }
@@ -79,11 +74,9 @@ public class BabyHealthRecordService {
         User user = userRepo.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
-
         if (!baby.getUser().getId().equals(user.getId()) && user.getRole() != Role.ADMIN) {
             throw new RuntimeException("Unauthorized");
         }
-
         babyRepo.delete(baby);
     }
 
@@ -100,7 +93,4 @@ public class BabyHealthRecordService {
         }
         return records.stream().map(BabyHealthRecordDTO::new).toList();
     }
-
-
-
 }

@@ -22,8 +22,7 @@ public class AppointmentRequestController {
     }
 
     @PostMapping
-    public ResponseEntity<AppointmentRequestDTO> create(@RequestBody AppointmentRequestCreateDTO dto,
-                                                        Authentication auth) {
+    public ResponseEntity<AppointmentRequestDTO> create(@RequestBody AppointmentRequestCreateDTO dto, Authentication auth) {
         return ResponseEntity.ok(service.create(dto, auth));
     }
 
@@ -38,16 +37,13 @@ public class AppointmentRequestController {
     }
 
     @PutMapping("/{id}/status")
-    public ResponseEntity<Void> updateStatus(@PathVariable Long id,
-                                             @RequestParam String status) {
+    public ResponseEntity<Void> updateStatus(@PathVariable Long id, @RequestParam String status) {
         service.updateStatus(id, status);
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/{id}/approve")
-    public ResponseEntity<AppointmentDTO> approve(@PathVariable Long id,
-                                                  @RequestBody AppointmentApprovalDTO dto) {
+    public ResponseEntity<AppointmentDTO> approve(@PathVariable Long id, @RequestBody AppointmentApprovalDTO dto) {
         return ResponseEntity.ok(service.approveAndCreateAppointment(id, dto.doctorName, dto.appointmentDate));
     }
-
 }

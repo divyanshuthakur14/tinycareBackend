@@ -3,6 +3,7 @@ package com.tinycare.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+@SuppressWarnings("ALL")
 @Entity
 public class Appointment {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

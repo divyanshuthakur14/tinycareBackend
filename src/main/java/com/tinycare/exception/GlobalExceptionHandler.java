@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+@SuppressWarnings("ALL")
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
